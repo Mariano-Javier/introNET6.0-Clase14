@@ -110,9 +110,4 @@ namespace introNET6._0_Clase14
 
     }
 
-
-
-
-
-
 }

@@ -2,9 +2,9 @@
 
 //Creo las 4 variaciones de palos.
 Cartas espadas = new Cartas("Espada");
-Cartas bastos = new Cartas("Basto");
-Cartas oros = new Cartas("Oro");
-Cartas copas = new Cartas("Copa");
+Cartas bastos = new Cartas(" Basto");
+Cartas oros = new Cartas("  Oro ");
+Cartas copas = new Cartas(" Copa ");
 
 //Creo un vector por cada palo
 var vectorCartasEspadas = espadas.GetCartas();
@@ -43,7 +43,8 @@ do
 
         case 2:
             Console.Clear();
-            Console.WriteLine("Carta Actual: " + mazo.Cartas.First());
+            Console.WriteLine("Carta Actual: ");
+            Console.WriteLine(mazo.Cartas.First());
             break;
 
         case 3:

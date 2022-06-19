@@ -21,16 +21,96 @@ namespace introNET6._0_Clase14
         
         public Cartas(string palo)
         {
-            Carta01 = "1 de " + palo;
-            Carta02 = "2 de " + palo;
-            Carta03 = "3 de " + palo;
-            Carta04 = "4 de " + palo;
-            Carta05 = "5 de " + palo;
-            Carta06 = "6 de " + palo;
-            Carta07 = "7 de " + palo;
-            Carta08 = "10 de " + palo;
-            Carta09 = "11 de " + palo;
-            Carta10 = "12 de " + palo;
+            Carta01 = "   _ _ _ _\n" +
+                      "|1        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 1|";
+
+            Carta02 = "   _ _ _ _\n" +
+                      "|2        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 2|";
+
+            Carta03 = "   _ _ _ _\n" +
+                      "|3        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 3|";
+
+            Carta04 = "   _ _ _ _\n" +
+                      "|4        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 4|";
+
+            Carta05 = "   _ _ _ _\n" +
+                      "|5        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 5|";
+
+            Carta06 = "   _ _ _ _\n" +
+                      "|6        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 6|";
+
+            Carta07 = "   _ _ _ _\n" +
+                      "|7        |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _ 7|";
+
+            Carta08 = "   _ _ _ _\n" +
+                      "|10       |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _10|";
+            
+            Carta09 = "   _ _ _ _\n" +
+                      "|11       |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _11|";
+
+            Carta10 = "   _ _ _ _\n" +
+                      "|12       |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "| " + palo + "  |\n" +
+                      "|         |\n" +
+                      "|         |\n" +
+                      "|_ _ _ _12|";
+                                  
         }
 
         public string[] GetCartas() //Envia en forma de vector las cartas ordenadas.
