@@ -1,8 +1,5 @@
 ﻿using introNET6._0_Clase14;
 
-
-
-
 //Creo las 4 variaciones de palos.
 Cartas espadas = new Cartas("Espada");
 Cartas bastos = new Cartas("Basto");
@@ -16,108 +13,7 @@ var vectorCartasOros = oros.GetCartas();
 var vectorCartasCopas = copas.GetCartas();
 
 //Asigno todos los palos a un mazo/baraja en una lista.
-List<String> baraja = new List<String>();
-
-baraja.AddRange(vectorCartasEspadas);
-baraja.AddRange(vectorCartasBastos);
-baraja.AddRange(vectorCartasOros);
-baraja.AddRange(vectorCartasCopas);
-
-//Creo la función que baraja aleatoriamente las 40 cartas.
-
-//static List<string> Barajar(List<string> baraja)
-//{
-//    //Función que ordena aleatoriamente una lista.
-//    var nuevaBaraja = baraja.OrderBy(emp => Guid.NewGuid()).ToList();
-//    return nuevaBaraja;
-//}
-List<string> barajaBarajada = new List<string>(baraja);
-List<string> cartasFueraDeBaraja = new List<string>();
-
-static List<string> Barajar(List<string> baraja)
-{
-    Random aleatorio = new Random();
-
-    List<string> NuevaListDeCartas = new List<string>();
-    List<int> NuevaListOfIndex = new List<int>();
-    List<string> listDeCartas = baraja;
-
-    List<int> listOfNumbers = new List<int>();
-
-
-    for (int i = 0; i < baraja.Count; i++)
-    {
-        listOfNumbers.Add(i);
-    };
-    
-    int totalCartas = listDeCartas.Count;
-
-    for (int i = 0; i < totalCartas; i++)
-    {
-        int numeroAleatorio;
-
-        do
-        {
-            numeroAleatorio = aleatorio.Next(0, baraja.Count);
-        }
-        while (NuevaListOfIndex.Contains(numeroAleatorio));
-
-        NuevaListOfIndex.Add(numeroAleatorio);
-        listOfNumbers.Remove(numeroAleatorio);
-    }
-
-    foreach (int index in NuevaListOfIndex)
-    {
-        NuevaListDeCartas.Add(listDeCartas[index]);
-    }
-
-    return NuevaListDeCartas;
-}
-
-// Devuelve la baraja mezclada aleatoriamente.
-//var barajaBarajada = Barajar(baraja);
-
-// imprime toda la baraja mezclada.
-//foreach (string name in barajaBarajada)
-//{
-//    Console.WriteLine(name);
-//}
-
-
-// Imprime las cartas 1 por 1 hasta que se acaben las cartas.
-
-static List<string> SiguienteCarta(List<string> baraja, List<string> cartasFueraDeBaraja)
-{
-    cartasFueraDeBaraja.Add(baraja[0]);
-    baraja.RemoveAt(0);
-    return baraja;
-}
-
-
-
-
-static List<string> DarCartas(int cantidad, List<string> barajaBarajada, List<string> cartasFueraDeBaraja)
-{
-    List<string> cartas = new List<string>();
-
-    for (int i = 0; i < cantidad; i++)
-    {
-        cartas.Add(barajaBarajada[i]);
-        cartasFueraDeBaraja.Add(barajaBarajada[i]);
-    }
-
-    for (int i = 0; i < cantidad; i++)
-    {
-        barajaBarajada.RemoveAt(0);
-    }
-
-    return cartas;
-}
-
-//barajaBarajada = SiguienteCarta(barajaBarajada);
-
-
-//var barajaBarajada = baraja;
+Mazo mazo = new Mazo(vectorCartasEspadas, vectorCartasBastos, vectorCartasOros, vectorCartasCopas);
 
 int opcion;
 do
@@ -136,105 +32,75 @@ do
     opcion = int.Parse(Console.ReadLine());
 
 
-    
+
     switch (opcion)
     {
         case 1:
             Console.Clear();
-            barajaBarajada = Barajar(barajaBarajada);
+            mazo.Barajar();
             Console.WriteLine("la baraja se ha barajado!");
             break;
 
         case 2:
             Console.Clear();
-            Console.WriteLine("Carta Actual: " + barajaBarajada[0]);
+            Console.WriteLine("Carta Actual: " + mazo.Cartas.First());
             break;
-            
+
         case 3:
             Console.Clear();
-            barajaBarajada = SiguienteCarta(barajaBarajada, cartasFueraDeBaraja);
-            Console.WriteLine("Carta siguiente: " + barajaBarajada[0]);
-
-            if (barajaBarajada.Count == 0)
+            List<string> tempListaDeCartasSiguiente = mazo.SiguienteCarta();
+            foreach (var carta in tempListaDeCartasSiguiente)
             {
-                Console.WriteLine("No hay cartas en la baraja!");
+                Console.WriteLine(carta);
             }
+
             break;
 
         case 4:
             Console.Clear();
-            Console.WriteLine("Quedan en la baraja: " + barajaBarajada.Count+" cartas.");
+            Console.WriteLine("Quedan en la baraja: " + mazo.Cartas.Count + " cartas.");
             break;
 
         case 5:
             Console.Clear();
-            List<string> cartasCantidad = new List<string>();
-            
             Console.WriteLine("Ingrese la cantidad de cartas que desea: ");
             int cantidad = int.Parse(Console.ReadLine());
+            List<string> tempListaDeCartas = mazo.DarCartas(cantidad);
 
-            if ( cantidad > barajaBarajada.Count)
+            foreach (var carta in tempListaDeCartas)
             {
-                Console.WriteLine("No hay suficientes cartas en la baraja!");
-                break;
+                Console.WriteLine(carta);
             }
-            else
-            {
-                Console.Clear();
-                cartasCantidad = DarCartas(cantidad, barajaBarajada, cartasFueraDeBaraja);
-
-                foreach (string name in cartasCantidad)
-                {
-                    Console.WriteLine(name);
-                }
-                break;
-
-            }
-
+            
+            break;
 
         case 6:
+            
             Console.Clear();
+            List<string> tempListaDeCartasMonton = mazo.CartasMonton();
 
-            if (cartasFueraDeBaraja.Count == 0)
+            foreach (var carta in tempListaDeCartasMonton)
             {
-                Console.WriteLine("No hay cartas fuera de la baraja!");
-                break;
+                Console.WriteLine(carta);
             }
-
-            else
-            {
-                foreach (string name in cartasFueraDeBaraja)
-                {
-                    Console.WriteLine(name);
-                }
-                break;
-            }
+            break;
 
         case 7:
             Console.Clear();
 
-
-            foreach (string name in barajaBarajada)
+            foreach (var carta in mazo.Cartas)
             {
-                Console.WriteLine(name);
+                Console.WriteLine(carta);
             }
-            break;
 
-
-        case 8:
             break;
             
+        case 8:
+            break;
+
         default:
             Console.WriteLine("Opción inválida");
             break;
     }
-
 }
 while (opcion != 8);
-
-
-
-
-
-
-

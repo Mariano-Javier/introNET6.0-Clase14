@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace introNET6._0_Clase14
 {
-    internal class Cartas
+    public class Cartas
     {
         public string Carta01 { get; set; }
         public string Carta02 { get; set; }
@@ -18,7 +18,7 @@ namespace introNET6._0_Clase14
         public string Carta08 { get; set; }
         public string Carta09 { get; set; }
         public string Carta10 { get; set; }
-
+        
         public Cartas(string palo)
         {
             Carta01 = "1 de " + palo;
@@ -47,49 +47,7 @@ namespace introNET6._0_Clase14
             cartas[8] = Carta09;
             cartas[9] = Carta10;
             return cartas;
-
         }
-
-        public List<string> CartasMezcladas() //mezcla las 10 cartas del mismo palo.
-        {
-            Random aleatorio = new Random();
-
-            List<string> NuevaListDeCartas = new List<string>();
-            List<int> NuevaListOfIndex = new List<int>();
-            List<string> listDeCartas = new List<string>()
-            {
-                Carta01, Carta02, Carta03, Carta04, Carta05, Carta06, Carta07, Carta08, Carta09, Carta10
-            };
-
-            List<int> listOfNumbers = new List<int>()
-            {
-                    0,1,2,3,4,5,6,7,8,9
-            };
-
-            int totalCartas = listDeCartas.Count;
-
-            for (int i = 0; i < totalCartas; i++)
-            {
-                int numeroAleatorio;
-
-                do
-                {
-                    numeroAleatorio = aleatorio.Next(0, 10);
-                }
-                while (NuevaListOfIndex.Contains(numeroAleatorio));
-
-                NuevaListOfIndex.Add(numeroAleatorio);
-                listOfNumbers.Remove(numeroAleatorio);
-            }
-
-            foreach (int index in NuevaListOfIndex)
-            {
-                NuevaListDeCartas.Add(listDeCartas[index]);
-            }
-
-            return NuevaListDeCartas;
-        }
-
     }
 }
 
